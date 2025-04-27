@@ -1,0 +1,128 @@
+[gd_scene load_steps=3 format=3 uid="uid://brnsri6tek33d"]
+
+[ext_resource type="Script" uid="uid://ol70s6nvghb6" path="res://Calculators/FractureToughness/fracture_toughness.gd" id="1_8rmlj"]
+[ext_resource type="Texture2D" uid="uid://dnswhwlkqm24a" path="res://Calculators/CalculatorBackground.png" id="2_r05fs"]
+
+[node name="StressIntensity" type="Node2D"]
+script = ExtResource("1_8rmlj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 576.0
+offset_bottom = 440.0
+texture = ExtResource("2_r05fs")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Constants" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="Constants"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 40.0
+text = "Fracture Toughness"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 96.0
+text = "Kc"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 136.0
+offset_bottom = 160.0
+text = "Y"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 184.0
+offset_right = 136.0
+offset_bottom = 224.0
+text = "σ"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 248.0
+offset_right = 136.0
+offset_bottom = 288.0
+text = "a"
+vertical_alignment = 1
+
+[node name="SideDisplay" type="RichTextLabel" parent="."]
+offset_left = 256.0
+offset_top = 16.0
+offset_right = 560.0
+offset_bottom = 424.0
+focus_mode = 2
+text = "Kc is the Fracture Toughness.
+K >= Kc for fractures to occur.
+
+Y is a material constant, commonly assumed to be 1.
+
+Sigma is the stress limit when cracks start to propagate. Should be the same magnitude as Kc (and likewise).
+
+a is the size of the flaw. If it is internal, it is half of the total size. a needs to be in meters. 
+"
+autowrap_mode = 2
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="FractureToughness" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 208.0
+offset_bottom = 96.0
+placeholder_text = "Toughness (Pa)"
+
+[node name="MaterialConstant" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 120.0
+offset_right = 208.0
+offset_bottom = 160.0
+placeholder_text = "Mat. Constant"
+
+[node name="Stress" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 184.0
+offset_right = 208.0
+offset_bottom = 224.0
+placeholder_text = "Stress (Pa)"
+
+[node name="CrackLength" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 248.0
+offset_right = 208.0
+offset_bottom = 288.0
+placeholder_text = "Crack Length (m)"
+
+[node name="Calculate" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 312.0
+offset_right = 208.0
+offset_bottom = 376.0
+text = "Calculate"
+
+[node name="Clear" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 384.0
+offset_right = 208.0
+offset_bottom = 424.0
+text = "Clear"
+
+[connection signal="text_changed" from="FractureToughness" to="." method="_on_fracture_toughness_text_changed"]
+[connection signal="text_changed" from="MaterialConstant" to="." method="_on_material_constant_text_changed"]
+[connection signal="text_changed" from="Stress" to="." method="_on_stress_text_changed"]
+[connection signal="text_changed" from="CrackLength" to="." method="_on_crack_length_text_changed"]
+[connection signal="pressed" from="Calculate" to="." method="_on_calculate_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]

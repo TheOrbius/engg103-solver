@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://chjcedyssbhv8"]
+
+[ext_resource type="Script" uid="uid://cktnlny26hfhe" path="res://Calculators/ColdWork/percentage_cold_work.gd" id="1_3yts1"]
+[ext_resource type="Texture2D" uid="uid://dnswhwlkqm24a" path="res://Calculators/CalculatorBackground.png" id="2_v4d4f"]
+
+[node name="PercentageColdWork" type="Node2D"]
+script = ExtResource("1_3yts1")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -192.0
+offset_top = -144.0
+offset_right = 352.0
+offset_bottom = 216.0
+texture = ExtResource("2_v4d4f")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Constants" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="Constants"]
+offset_left = -128.0
+offset_top = -128.0
+offset_bottom = -104.0
+text = "Percentage CW"
+
+[node name="A0" type="Label" parent="Constants"]
+offset_left = -176.0
+offset_top = -104.0
+offset_right = -64.0
+offset_bottom = -64.0
+text = "A0"
+
+[node name="AF" type="Label" parent="Constants"]
+offset_left = -176.0
+offset_top = -40.0
+offset_right = -64.0
+text = "AF"
+
+[node name="CW" type="Label" parent="Constants"]
+offset_left = -176.0
+offset_top = 24.0
+offset_right = -64.0
+offset_bottom = 64.0
+text = "%CW"
+
+[node name="SideDisplay" type="RichTextLabel" parent="."]
+offset_left = 24.0
+offset_top = -104.0
+offset_right = 320.0
+offset_bottom = 152.0
+focus_mode = 2
+text = "A0 and AF should be in the same units
+%CW should be the percentage
+i.e 0 < CW < 100"
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="OriginalArea" type="TextEdit" parent="."]
+offset_left = -128.0
+offset_top = -104.0
+offset_bottom = -64.0
+placeholder_text = "Initial Area"
+
+[node name="FinalArea" type="TextEdit" parent="."]
+offset_left = -128.0
+offset_top = -40.0
+placeholder_text = "Final Area"
+
+[node name="ColdWork" type="TextEdit" parent="."]
+offset_left = -128.0
+offset_top = 24.0
+offset_bottom = 64.0
+placeholder_text = "Cold Work %"
+
+[node name="Calculate" type="Button" parent="."]
+offset_left = -128.0
+offset_top = 88.0
+offset_bottom = 152.0
+text = "Calculate"
+
+[node name="Clear" type="Button" parent="."]
+offset_left = -128.0
+offset_top = 160.0
+offset_bottom = 200.0
+text = "Clear"
+
+[connection signal="text_changed" from="OriginalArea" to="." method="_on_original_area_text_changed"]
+[connection signal="text_changed" from="FinalArea" to="." method="_on_final_area_text_changed"]
+[connection signal="text_changed" from="ColdWork" to="." method="_on_cold_work_text_changed"]
+[connection signal="pressed" from="Calculate" to="." method="_on_calculate_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]

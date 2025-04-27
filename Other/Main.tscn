@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyfklse6j2qli"]
+
+[ext_resource type="PackedScene" uid="uid://chjcedyssbhv8" path="res://Calculators/ColdWork/PercentageColdWork.tscn" id="1_jvbca"]
+[ext_resource type="Script" uid="uid://dmrx3jarntcin" path="res://Other/main.gd" id="1_jvyce"]
+[ext_resource type="PackedScene" uid="uid://bj0etwt3su6di" path="res://Calculators/CrossSectionalArea/CrossSection.tscn" id="3_62byk"]
+[ext_resource type="PackedScene" uid="uid://de6inei2tjp26" path="res://Calculators/ElongationUnderForce/ElongationUnderForce.tscn" id="3_nfahi"]
+[ext_resource type="PackedScene" uid="uid://cpba2mmlmd7si" path="res://Calculators/Strain/Strain.tscn" id="5_xjwqi"]
+[ext_resource type="PackedScene" uid="uid://b4nccjurg3w3f" path="res://Calculators/Stress/Stress.tscn" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://c2nn7ki83yl6j" path="res://Calculators/UnitConverter/UnitConverter.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://bpxbygadstnbk" path="res://Calculators/HookesLaw/HookesLaw.tscn" id="7_trn2v"]
+[ext_resource type="Texture2D" uid="uid://dnswhwlkqm24a" path="res://Calculators/CalculatorBackground.png" id="8_nqutg"]
+[ext_resource type="PackedScene" uid="uid://6cbqry2g0t1s" path="res://Other/HelpMenu.tscn" id="8_rcb7m"]
+[ext_resource type="PackedScene" uid="uid://brnsri6tek33d" path="res://Calculators/FractureToughness/FractureToughness.tscn" id="9_vxxkn"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_jvyce")
+
+[node name="Panel0" type="Node2D" parent="."]
+position = Vector2(-1440, 0)
+
+[node name="Background" type="NinePatchRect" parent="Panel0"]
+modulate = Color(0.57902, 0.57902, 0.57902, 1)
+offset_left = -720.0
+offset_top = -408.0
+offset_right = 720.0
+offset_bottom = 408.0
+texture = ExtResource("8_nqutg")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="StressIntensity" parent="Panel0" instance=ExtResource("3_nfahi")]
+position = Vector2(-720, -408)
+
+[node name="Panel1" type="Node2D" parent="."]
+
+[node name="Background" type="NinePatchRect" parent="Panel1"]
+modulate = Color(0.57902, 0.57902, 0.57902, 1)
+offset_left = -720.0
+offset_top = -408.0
+offset_right = 720.0
+offset_bottom = 408.0
+texture = ExtResource("8_nqutg")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="PercentageColdWork" parent="Panel1" instance=ExtResource("1_jvbca")]
+position = Vector2(16, -264)
+
+[node name="CrossSection" parent="Panel1" instance=ExtResource("3_62byk")]
+position = Vector2(-144, 80)
+
+[node name="PercentageColdWork2" parent="Panel1" instance=ExtResource("5_xjwqi")]
+position = Vector2(368, 96)
+
+[node name="Stress" parent="Panel1" instance=ExtResource("6_3dxm6")]
+position = Vector2(-528, -264)
+
+[node name="UnitConverter" parent="Panel1" instance=ExtResource("7_lgr22")]
+position = Vector2(400, -408)
+
+[node name="HookesLaw" parent="Panel1" instance=ExtResource("7_trn2v")]
+position = Vector2(-720, -48)
+
+[node name="Panel2" type="Node2D" parent="."]
+position = Vector2(1440, 0)
+
+[node name="Background" type="NinePatchRect" parent="Panel2"]
+modulate = Color(0.57902, 0.57902, 0.57902, 1)
+offset_left = -720.0
+offset_top = -408.0
+offset_right = 720.0
+offset_bottom = 408.0
+texture = ExtResource("8_nqutg")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="StressIntensity" parent="Panel2" instance=ExtResource("9_vxxkn")]
+position = Vector2(-720, -408)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="LeftButton" type="Button" parent="."]
+offset_left = -712.0
+offset_top = 336.0
+offset_right = -584.0
+offset_bottom = 400.0
+text = "<<<<<<"
+
+[node name="RightButton" type="Button" parent="."]
+offset_left = 584.0
+offset_top = 336.0
+offset_right = 712.0
+offset_bottom = 400.0
+text = ">>>>>>"
+
+[node name="HelpButton" type="Button" parent="."]
+offset_left = -40.0
+offset_top = 320.0
+offset_right = 40.0
+offset_bottom = 384.0
+text = "Help"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = -568.0
+offset_top = 344.0
+offset_right = -440.0
+offset_bottom = 384.0
+placeholder_text = "Notepad"
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+offset_left = -376.0
+offset_top = 344.0
+offset_right = -248.0
+offset_bottom = 384.0
+placeholder_text = "Notepad"
+
+[node name="TextEdit3" type="TextEdit" parent="."]
+offset_left = -184.0
+offset_top = 344.0
+offset_right = -56.0
+offset_bottom = 384.0
+placeholder_text = "Notepad"
+
+[node name="TextEdit4" type="TextEdit" parent="."]
+offset_left = 56.0
+offset_top = 344.0
+offset_right = 184.0
+offset_bottom = 384.0
+placeholder_text = "Notepad"
+
+[node name="TextEdit5" type="TextEdit" parent="."]
+offset_left = 248.0
+offset_top = 344.0
+offset_right = 376.0
+offset_bottom = 384.0
+placeholder_text = "Notepad"
+
+[node name="TextEdit6" type="TextEdit" parent="."]
+offset_left = 440.0
+offset_top = 344.0
+offset_right = 568.0
+offset_bottom = 384.0
+placeholder_text = "Notepad"
+
+[node name="HelpMenu" parent="." instance=ExtResource("8_rcb7m")]
+position = Vector2(0, 800)
+
+[connection signal="pressed" from="LeftButton" to="." method="shift_left"]
+[connection signal="pressed" from="RightButton" to="." method="shift_right"]
+[connection signal="pressed" from="HelpButton" to="." method="open_help_menu"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="text_changed" from="TextEdit2" to="." method="_on_text_edit_2_text_changed"]
+[connection signal="text_changed" from="TextEdit3" to="." method="_on_text_edit_3_text_changed"]
+[connection signal="text_changed" from="TextEdit4" to="." method="_on_text_edit_4_text_changed"]
+[connection signal="text_changed" from="TextEdit5" to="." method="_on_text_edit_5_text_changed"]
+[connection signal="text_changed" from="TextEdit6" to="." method="_on_text_edit_6_text_changed"]

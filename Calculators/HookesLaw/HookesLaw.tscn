@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpxbygadstnbk"]
+
+[ext_resource type="Texture2D" uid="uid://dnswhwlkqm24a" path="res://Calculators/CalculatorBackground.png" id="1_4u2q6"]
+[ext_resource type="Script" uid="uid://bpqmiwvgipwgg" path="res://Calculators/HookesLaw/hookes_law.gd" id="1_is8uo"]
+
+[node name="HookesLaw" type="Node2D"]
+script = ExtResource("1_is8uo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 448.0
+offset_bottom = 360.0
+texture = ExtResource("1_4u2q6")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Constants" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="Constants"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 39.0
+text = "Hooke's Law"
+
+[node name="Label2" type="Label" parent="Constants"]
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 105.0
+offset_bottom = 71.0
+text = "Stress"
+
+[node name="Label3" type="Label" parent="Constants"]
+offset_left = 8.0
+offset_top = 112.0
+offset_right = 105.0
+offset_bottom = 135.0
+text = "Modulus"
+
+[node name="Label4" type="Label" parent="Constants"]
+offset_left = 8.0
+offset_top = 176.0
+offset_right = 105.0
+offset_bottom = 199.0
+text = "Strain"
+
+[node name="Display" type="RichTextLabel" parent="."]
+offset_left = 232.0
+offset_top = 40.0
+offset_right = 432.0
+offset_bottom = 336.0
+focus_mode = 2
+text = "Stress and Modulus should be in the same units
+
+Strain should be in decimal form, not percentage."
+autowrap_mode = 2
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Stress" type="TextEdit" parent="."]
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 208.0
+offset_bottom = 80.0
+placeholder_text = "Stress (Pa)"
+
+[node name="Modulus" type="TextEdit" parent="."]
+offset_left = 80.0
+offset_top = 104.0
+offset_right = 208.0
+offset_bottom = 144.0
+placeholder_text = "Modulus (Pa)"
+
+[node name="Strain" type="TextEdit" parent="."]
+offset_left = 80.0
+offset_top = 168.0
+offset_right = 208.0
+offset_bottom = 208.0
+placeholder_text = "Strain"
+
+[node name="Calculate" type="Button" parent="."]
+offset_left = 80.0
+offset_top = 232.0
+offset_right = 208.0
+offset_bottom = 288.0
+text = "Calculate"
+
+[node name="Clear" type="Button" parent="."]
+offset_left = 80.0
+offset_top = 296.0
+offset_right = 208.0
+offset_bottom = 336.0
+text = "Clear"
+
+[connection signal="text_changed" from="Stress" to="." method="_on_stress_text_changed"]
+[connection signal="text_changed" from="Modulus" to="." method="_on_modulus_text_changed"]
+[connection signal="text_changed" from="Strain" to="." method="_on_strain_text_changed"]
+[connection signal="pressed" from="Calculate" to="." method="_on_calculate_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]

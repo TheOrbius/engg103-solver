@@ -1,0 +1,124 @@
+[gd_scene load_steps=3 format=3 uid="uid://de6inei2tjp26"]
+
+[ext_resource type="Script" uid="uid://c0vgopbkwhbjn" path="res://Calculators/ElongationUnderForce/elongation_under_force.gd" id="1_3guxr"]
+[ext_resource type="Texture2D" uid="uid://dnswhwlkqm24a" path="res://Calculators/CalculatorBackground.png" id="2_7nh7a"]
+
+[node name="ElongationUnderForce" type="Node2D"]
+script = ExtResource("1_3guxr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 576.0
+offset_bottom = 464.0
+texture = ExtResource("2_7nh7a")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Constants" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="Constants"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 40.0
+text = "Elastic Elongation under Force (Unary)"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 64.0
+offset_bottom = 96.0
+text = "A0"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 136.0
+offset_bottom = 160.0
+text = "L0"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 184.0
+offset_right = 136.0
+offset_bottom = 224.0
+text = "F"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Constants"]
+offset_left = 24.0
+offset_top = 248.0
+offset_right = 136.0
+offset_bottom = 288.0
+text = "E"
+vertical_alignment = 1
+
+[node name="SideDisplay" type="RichTextLabel" parent="."]
+offset_left = 256.0
+offset_top = 40.0
+offset_right = 560.0
+offset_bottom = 448.0
+focus_mode = 2
+text = "Initial Area and Initial Length need to be in the same units, e.g mm^2 and mm respectively. The final answer will be given in the same units.
+
+Force needs to be in N
+
+Modulus needs to be in MPa"
+autowrap_mode = 2
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="InitialArea" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 208.0
+offset_bottom = 96.0
+placeholder_text = "Initial Area (m^2)"
+
+[node name="InitialLength" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 120.0
+offset_right = 208.0
+offset_bottom = 160.0
+placeholder_text = "Initial Length (m)"
+
+[node name="Force" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 184.0
+offset_right = 208.0
+offset_bottom = 224.0
+placeholder_text = "Force (N)"
+
+[node name="Modulus" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 248.0
+offset_right = 208.0
+offset_bottom = 288.0
+placeholder_text = "Modulus (MPa)"
+
+[node name="Calculate" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 312.0
+offset_right = 208.0
+offset_bottom = 376.0
+text = "Calculate"
+
+[node name="Clear" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 400.0
+offset_right = 208.0
+offset_bottom = 440.0
+text = "Clear"
+
+[connection signal="text_changed" from="InitialArea" to="." method="_on_initial_area_text_changed"]
+[connection signal="text_changed" from="InitialLength" to="." method="_on_initial_length_text_changed"]
+[connection signal="text_changed" from="Force" to="." method="_on_force_text_changed"]
+[connection signal="text_changed" from="Modulus" to="." method="_on_modulus_text_changed"]
+[connection signal="pressed" from="Calculate" to="." method="_on_calculate_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]

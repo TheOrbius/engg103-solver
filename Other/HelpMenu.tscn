@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://6cbqry2g0t1s"]
+
+[ext_resource type="Texture2D" uid="uid://dnswhwlkqm24a" path="res://Calculators/CalculatorBackground.png" id="1_7h81g"]
+[ext_resource type="Script" uid="uid://dw1wgucub8x2h" path="res://Other/help_menu.gd" id="1_jmv8r"]
+
+[node name="HelpMenu" type="Node2D"]
+script = ExtResource("1_jmv8r")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(0, 2, 2, 1)
+offset_left = -448.0
+offset_top = -352.0
+offset_right = 448.0
+offset_bottom = 288.0
+texture = ExtResource("1_7h81g")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Text" type="Label" parent="."]
+offset_left = -432.0
+offset_top = -336.0
+offset_right = 432.0
+offset_bottom = 216.0
+text = "This is a tool to help automate a lot of working out. There are two types of calculators, unary (only solves for one thing) and multi. The majority are multi and do not have a unique identifier. If a calculator is unary, it will be marked as so, and all values need to be entered. For the other calculators, all fields except one need to be entered, and they will solve for the missing field when Calculate is pressed.
+
+Almost all of the calculators show the steps to working out, with few exceptions such as the unit converter.
+
+Because of floating point errors, precision can only be guaranteed up to 14 digits, after that the order of magnitude will be the same but the specific digits won't be. To see an example of this, in the unit converter try converting a large number of something into that same unit, e.g mm into mm. Once the number is large enough the digits will start to differ.
+
+If you want to guarantee precision, because of the working out steps shown you can simply put in the final equation into a calculator and it will be correct.
+
+The boxes at the bottom are intended for short notes for storing values temporarily between different formulas.
+
+If you notice a formula is missing, wrong, or want a new one added, send me a message."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = -64.0
+offset_top = 216.0
+offset_right = 64.0
+offset_bottom = 272.0
+text = "Close"
+metadata/_edit_use_anchors_ = true
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 72.0
+offset_top = 216.0
+offset_right = 429.0
+offset_bottom = 272.0
+text = "Force Notepads to be strictly numerical:"
+
+[connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
