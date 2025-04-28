@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://rrjclixq0phd"]
+
+[ext_resource type="Script" uid="uid://coqct6jr1hno8" path="res://Calculators/Fatigue/fatigue.gd" id="1_ettaa"]
+[ext_resource type="Texture2D" uid="uid://dnswhwlkqm24a" path="res://Calculators/CalculatorBackground.png" id="2_vv38o"]
+
+[node name="Fatigue" type="Node2D"]
+script = ExtResource("1_ettaa")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 640.0
+offset_bottom = 512.0
+texture = ExtResource("2_vv38o")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Constants" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Constants"]
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 192.0
+offset_bottom = 47.0
+text = "Fatigue (Unary)"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Constants"]
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 104.0
+text = "σ_max"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Constants"]
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 144.0
+offset_bottom = 168.0
+text = "σ_min"
+vertical_alignment = 1
+
+[node name="MaxStress" type="TextEdit" parent="."]
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 208.0
+offset_bottom = 104.0
+placeholder_text = "Stress (Pa)"
+
+[node name="MinStress" type="TextEdit" parent="."]
+offset_left = 80.0
+offset_top = 128.0
+offset_right = 208.0
+offset_bottom = 168.0
+placeholder_text = "Stress (Pa)"
+
+[node name="CalculateButton" type="Button" parent="."]
+offset_left = 80.0
+offset_top = 192.0
+offset_right = 208.0
+offset_bottom = 256.0
+text = "Calculate"
+
+[node name="ClearButton" type="Button" parent="."]
+offset_left = 80.0
+offset_top = 264.0
+offset_right = 208.0
+offset_bottom = 296.0
+text = "Clear"
+
+[node name="SideDisplay" type="RichTextLabel" parent="."]
+offset_left = 256.0
+offset_top = 16.0
+offset_right = 624.0
+offset_bottom = 496.0
+focus_mode = 2
+text = "The units will be the same as the ones entered. Both need to use the same magnitudes.
+
+σ_max is the highest amount of stress in a stress cycle
+
+σ_min is the lowest amount of stress in a stress cycle"
+vertical_alignment = 1
+selection_enabled = true
+
+[connection signal="text_changed" from="MaxStress" to="." method="_on_max_stress_text_changed"]
+[connection signal="text_changed" from="MinStress" to="." method="_on_min_stress_text_changed"]
+[connection signal="pressed" from="CalculateButton" to="." method="_on_calculate_button_pressed"]
+[connection signal="pressed" from="ClearButton" to="." method="_on_clear_button_pressed"]

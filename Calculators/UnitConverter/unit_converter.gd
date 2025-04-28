@@ -113,6 +113,40 @@ func change_type(id: int):
 			rpop.add_item("PSI")
 			
 			base_modifier = [1.0, 0.000001, 0.000000001, 0.000145038]
+		4:
+			$TypeSelector.text = "Mass"
+			var lpop: PopupMenu = $LeftUnits.get_popup()
+			var rpop: PopupMenu = $RightUnits.get_popup()
+			lpop.clear(true)
+			rpop.clear(true)
+			
+			lpop.add_item("Kg")
+			lpop.add_item("g")
+			lpop.add_item("mg")
+			
+			rpop.add_item("Kg")
+			rpop.add_item("g")
+			rpop.add_item("mg")
+			
+			base_modifier = [0.001, 1, 1000.0]
+		5:
+			$TypeSelector.text = "Volume"
+			var lpop: PopupMenu = $LeftUnits.get_popup()
+			var rpop: PopupMenu = $RightUnits.get_popup()
+			lpop.clear(true)
+			rpop.clear(true)
+			
+			lpop.add_item("mm^3")
+			lpop.add_item("cm^3")
+			lpop.add_item("m^3")
+			lpop.add_item("km^3")
+			
+			rpop.add_item("mm^3")
+			rpop.add_item("cm^3")
+			rpop.add_item("m^3")
+			rpop.add_item("km^3")
+			
+			base_modifier = [1000000000.0, 1000000.0, 1.0, 0.000000001]
 		_:
 			# Should not happen
 			pass

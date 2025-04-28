@@ -49,11 +49,11 @@ text = "Close"
 metadata/_edit_use_anchors_ = true
 
 [node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 72.0
+offset_left = 64.0
 offset_top = 216.0
-offset_right = 429.0
+offset_right = 432.0
 offset_bottom = 272.0
-text = "Force Notepads to be strictly numerical:"
+text = "Allow symbols to be entered in notepads:"
 
 [connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
